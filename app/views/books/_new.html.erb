@@ -1,0 +1,28 @@
+<h2>User info</h2>
+<table>
+  <tbody>
+    <tr>
+      <th>name</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th></th>
+    </tr>
+  </tbody>
+</table>
+<div>
+  設定ボタン
+</div>
+<h2>New book</h2>
+<%= form_with model: book, local:true do |f| %>
+  <div>
+    <label>Title</label><br>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+  <label>Opinion</label><br>
+    <%= f.text_area :opinion %>
+  </div>
+  <%= f.submit "Create Book" %>
+<% end %>
