@@ -1,0 +1,31 @@
+<%= render 'users/user', user: @user %>
+<%= render 'books/new', book: @book %>
+<h2>Book detail</h2>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to user_path(@detail.user.id) do %>
+          <%= attachment_image_tag @detail.user, :profile_image, :fill, 40, 40, format:"jpeg", fallback: "no_image.jpg", size:"40x40" %><br>
+          <%= @detail.user.name %>
+          <% end %>
+      </td>
+      <td>
+        <%= link_to "" do %>
+          <%= @detail.title %>
+        <% end %>
+      </td>
+      <td><%= @detail.body %></td>
+      <td>
+        <% if @detail.user == current_user %>
+        　<%= link_to "Edit", edit_book_path(@detail) %>
+        <% end %>
+      </td>
+      <td>
+        <% if @detail.user == current_user %>
+          <%= link_to "Destroy", book_path(@detail), method: :delete %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
