@@ -2,19 +2,20 @@ class BookCommentsController < ApplicationController
   before_action :ensure_correct_user, only: [:destroy]
 
   def create
-    book = Book.find(params[:book_id])
+    @book = Book.find(params[:book_id])
     comment = current_user.book_comments.new(book_comment_params)
-    comment.book_id = book.id
+    comment.book_id = @book.id
     if comment.save
-      redirect_to book_path(book), notice: "You have updated cooment successfully."
+      # redirect_to book_path(@book)
     else
-      redirect_to book_path(book)
+      @user = @book.user
+      render template: "books/show"
     end
   end
 
   def destroy
+    @book = Book.find(params[:book_id])
     BookComment.find_by(id: params[:id], book_id: params[:book_id]).destroy
-    redirect_to book_path(params[:book_id])
   end
 
   private
