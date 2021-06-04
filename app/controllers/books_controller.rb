@@ -16,7 +16,9 @@ class BooksController < ApplicationController
   def index
     @user = current_user
     @book = Book.new
-    @books = Book.all
+    # @books = Book.all
+    # @books = Book.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
+    @books = Book.last_week #週間ランキング(0が表示されない)
   end
 
   def show

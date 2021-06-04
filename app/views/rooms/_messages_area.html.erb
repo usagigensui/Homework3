@@ -1,0 +1,7 @@
+  <% if messages.present? %>
+    <% messages.each do |m| %>
+      <%= m.content %>
+    <% end %>
+  <% else %>
+    <p>メッセージはまだありません</p>
+  <% end %>

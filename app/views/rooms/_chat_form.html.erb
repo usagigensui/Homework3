@@ -1,0 +1,9 @@
+<%= form_with model:message, local:true do |f| %>
+  <div class="form-group">
+    <%= f.text_field :content, class:"form-control", id:"inputContent", placeholder:"メッセージを入力して下さい" %>
+  </div>
+  <%= f.hidden_field :room_id, value: room.id %>
+  <div class="form-group">
+    <%= f.submit "投稿する" %>
+  </div>
+<% end %>

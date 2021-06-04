@@ -1,0 +1,9 @@
+<% @entries.each do |e| %>
+  <h4><%= e.user.name %>さん</h2>
+<% end %>
+
+<div class="messages_area">
+  <%= render "rooms/messages_area", {messages: @messages} %>
+</div>
+
+<%= render "rooms/chat_form", {message: @message, room: @room} %>
